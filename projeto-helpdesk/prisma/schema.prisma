@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------------------------------------------------------
+// MODELOS DO BANCO DE DADOS
+// ---------------------------------------------------------
+
+model Cliente {
+  id        String   @id @default(uuid())
+  nome      String
+  email     String   @unique
+  telefone  String
+  senha     String
+  
+  // Prisma exige que a gente coloque a relação inversa (Um cliente tem Múltiplos tickets)
+  tickets   Ticket[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("clientes")
+}
+
+model Atendente {
+  id                  String   @id @default(uuid())
+  nome                String
+  email               String   @unique
+  telefone            String
+  senha               String
+  
+  // Dashboard de performance
+  ticketsConcluidos   Int      @default(0)
+  ticketsEmAndamento  Int      @default(0)
+  ticketsCancelados   Int      @default(0)
+  ticketsAbertos      Int      @default(0)
+  
+  tickets             Ticket[]
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("atendentes")
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+}
+
+model Ticket {
+  id              String       @id @default(uuid())
+  title           String
+  description     String
+  status          TicketStatus @default(OPEN)
+  
+  // Métricas do Desafio
+  dataAbertura    DateTime     @default(now())
+  dataFechamento  DateTime?    // Interrogação significa "Opcional" (null) no Prisma
+  tempoDeResposta Int?
+  
+  // Relações e Chaves Estrangeiras (Foreign Keys)
+  clienteId       String
+  cliente         Cliente      @relation(fields: [clienteId], references: [id])
+  
+  atendenteId     String?      // Pode nascer vazio (null) sem atendente atrelado!
+  atendente       Atendente?   @relation(fields: [atendenteId], references: [id])
+
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  @@map("tickets")
+}

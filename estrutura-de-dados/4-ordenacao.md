@@ -111,6 +111,7 @@ function insertionSort(arr: number[]): number[] {
 
   return arr;
 }
+```
 
 ## 4. Quick Sort (Ordenação Rápida)
 
