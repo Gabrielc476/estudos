@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "fase 13/3-arquitetura-software.md",
+                "file": "Typescript.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3-arquitetura-software"
+              "title": "Typescript"
             }
           }
         ],
@@ -213,6 +213,7 @@
   },
   "active": "d07ffbd7df231b00",
   "lastOpenFiles": [
+    "fase 13/3-arquitetura-software.md",
     "projeto-helpdesk/infra",
     "projeto-helpdesk/prisma/migrations/20260408161137_init/migration.sql",
     "projeto-helpdesk/prisma/migrations/20260408161137_init",
@@ -222,13 +223,11 @@
     "fase 13/1-o-que-e-prisma.md",
     "projeto-helpdesk/README.md",
     "fase 13/4-readme-desafio.md",
-    "fase 13/3-arquitetura-software.md",
     "fase 13",
     "projeto-helpdesk/docker-compose.yml",
     "projeto-helpdesk/application/createAtendenteUseCase.ts",
     "projeto-helpdesk/application/createClienteUseCase.ts",
     "projeto-helpdesk/shared/utils/quickSort.ts",
-    "projeto-helpdesk/shared/utils",
     "arquitetura-software.md",
     "fase-7/1-modificadores-acesso.md",
     "Dashboard.md",
